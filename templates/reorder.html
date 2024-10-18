@@ -1,8 +1,7 @@
-{% extends "base.html" %}
 
-{% block content %}
-    <form action="/todos/reorder" method="post">
-
+    <form hx-post="/todos/reorder"
+            hx-target="main"
+            hx-swap="innerHTML show:main:top">
 
     <ul id="todo-list" style="list-style: none">
         {% for todo in todos %}
@@ -23,5 +22,5 @@
             animation: 150
     });
     </script>
-{% endblock %}
+
 

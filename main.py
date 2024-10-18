@@ -23,7 +23,7 @@ def index():
 @app.get('/todos')
 def all_todos():
     view = request.args.get('view', None)
-    search = request.args.get('q', None)
+    search = request.args.get('search', None)
     todos = Todo.all(view, search)
     return render_template("index.html", todos=todos, view = view, search=search)
 
@@ -40,7 +40,8 @@ def toggle_todo(id):
     todo = Todo.find(int(id))
     todo.toggle_completed()
     todo.save()
-    return redirect("/todos" + add_view_context(view))
+    todos = Todo.all(view)
+    return render_template("main.html", todos=todos, view=view, editing=None)
 
 @app.get('/todos/<id>/edit')
 def edit_todo(id):
@@ -64,11 +65,18 @@ def show_reorder_ui():
 
 @app.post('/todos/reorder')
 def update_todo_order():
+    view = request.args.get('view', None)
     id_list = request.form.getlist("ids")
     Todo.reorder(id_list)
-    return redirect("/todos")
+    todos = Todo.all(view)
+    return render_template("main.html", todos=todos, view=view, editing=None)
 
-
+@app.get('/todos/search')
+def show_todo_search():
+    view = request.args.get('view', None)
+    search = request.args.get('search', None)
+    todos = Todo.all(view, search)
+    return render_template("main.html", todos=todos, view=view, search=search, searching=1)
 
 def add_view_context(view):
     return ("?view=" + view) if view is not None else ""
