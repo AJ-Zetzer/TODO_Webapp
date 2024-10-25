@@ -4,7 +4,7 @@
             <div style="display: flex; align-items: center;">
             <input {{ 'autofocus' if editing is undefined and searching is undefined}} required type="text" name="todo" placeholder="Enter a new TODO">
 
-            <select name="category"  required style="width: 20%;">
+            <select name="day"  required style="width: 20%;">
             <option value="" disabled selected>Select Day</option>
             <option value="Monday">Monday</option>
             <option value="Tuesday">Tuesday</option>
@@ -34,6 +34,8 @@
                     <input type="hidden" name="view" value="{{ view }}">
                 </form>
                 {% else %}
+
+                {% if todo.day == day %}
                 <form hx-post="/todos/{{ todo.id }}/toggle"
                       hx-target="main"
                     ondblclick="document.getElementById('edit-{{ todo.id }}').submit()">
@@ -56,6 +58,7 @@
                 <form id="edit-{{ todo.id }}" action="/todos/{{ todo.id }}/edit" method="get">
                     <input type="hidden" name="view" value="{{ view }}">
                 </form>
+                {% endif %}
                 {% endif %}
             </li>
         {% endfor %}

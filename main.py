@@ -32,7 +32,7 @@ def all_todos():
 @app.post('/todos')
 def create_todos():
     view = request.form.get('view', None)
-    todo = Todo(text = request.form['todo'], completed=False)
+    todo = Todo(text = request.form['todo'], day = request.form['day'], completed=False)
     todo.save()
     return redirect("/todos" + add_view_context(view))
 

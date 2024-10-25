@@ -12,7 +12,7 @@ class Todo(Model):
     text = CharField()
     completed = BooleanField()
     order = IntegerField(null=True)
-
+    day = CharField()
 
 
 
