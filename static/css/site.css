@@ -1,3 +1,51 @@
 .center {
     text-align: center;
 }
+
+.paper {
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 250px;
+            margin: 10px; /* Space between elements */
+            position: relative;
+            overflow: hidden;
+            flex: 1 0 200px; /* Responsive sizing */
+        }
+
+        .paper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+            opacity: 0.1; /* Adjust for more or less texture */
+            z-index: 1;
+        }
+
+        .list {
+            position: relative;
+            z-index: 2;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .list li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .list li:last-child {
+            border-bottom: none;
+        }
+
+        .header {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            text-align: center;
+        }

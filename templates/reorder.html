@@ -3,7 +3,8 @@
             hx-target="main"
             hx-swap="innerHTML show:main:top">
 
-    <ul id="todo-list" style="list-style: none">
+
+    <ul id="todo-list" style="list-style: none" class="list">
         {% for todo in todos %}
             <li>
             <span class="handle">
@@ -14,13 +15,14 @@
             </li>
         {% endfor %}
     </ul>
+
     <button>Save</button>
     </form>
+
     <script>
         new Sortable(document.getElementById('todo-list'), {
             handle: '.handle', // handle's class
             animation: 150
     });
     </script>
-
 

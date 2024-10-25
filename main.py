@@ -22,10 +22,12 @@ def index():
 
 @app.get('/todos')
 def all_todos():
+
     view = request.args.get('view', None)
     search = request.args.get('search', None)
     todos = Todo.all(view, search)
-    return render_template("index.html", todos=todos, view = view, search=search)
+    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    return render_template("index.html", todos=todos, view = view, search=search, week = week)
 
 @app.post('/todos')
 def create_todos():

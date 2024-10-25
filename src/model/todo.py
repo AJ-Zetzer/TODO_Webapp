@@ -13,6 +13,9 @@ class Todo(Model):
     completed = BooleanField()
     order = IntegerField(null=True)
 
+
+
+
     def toggle_completed(self):
         self.completed = not self.completed
 
