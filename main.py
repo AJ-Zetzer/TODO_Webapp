@@ -78,7 +78,8 @@ def show_todo_search():
     view = request.args.get('view', None)
     search = request.args.get('search', None)
     todos = Todo.all(view, search)
-    return render_template("main.html", todos=todos, view=view, search=search, searching=1)
+    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    return render_template("main.html", todos=todos, week = week, view=view, search=search, searching=1)
 
 def add_view_context(view):
     return ("?view=" + view) if view is not None else ""

@@ -21,6 +21,7 @@
     <a hx-get="/todos/reorder"
        hx-target="#todos-list"
        hx-swap="outerHTML">Reorder Todos</a>
+    <div class = "week-container">
     {% for day in week %}
     <div class="paper">
     <header class="header">{{ day }}</header>
@@ -61,6 +62,7 @@
     </ol>
     </div>
     {% endfor %}
+    </div>
     <nav>
         <ul>
             <li>
