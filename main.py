@@ -52,7 +52,9 @@ def edit_todo(id):
     view = request.args.get('view', None)
     todos = Todo.all(view)
     #return redirect('/todos')
-    return render_template("index.html", todos=todos, editing=int(id), view=view)
+    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    search = request.args.get('search', None)
+    return render_template("main.html", todos=todos, editing=int(id), view = view, search=search, week = week)
 
 @app.post('/todos/<id>')
 def update_todos(id):
