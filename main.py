@@ -43,7 +43,7 @@ def toggle_todo(id):
     todo.toggle_completed()
     todo.save()
     todos = Todo.all(view)
-    return render_template("main.html", todos=todos, view=view, editing=None)
+    return redirect('/todos')
 
 @app.get('/todos/<id>/edit')
 def edit_todo(id):
