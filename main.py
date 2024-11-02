@@ -59,10 +59,10 @@ def update_todos(id):
     todo.save()
     return redirect("/todos" + add_view_context(view))
 
-@app.get('/todos/reorder')
-def show_reorder_ui():
+@app.get('/todos/reorder/<day>')
+def show_reorder_ui(day):
     view = request.args.get('view', None)
-    todos = Todo.all(view)
+    todos = Todo.all(view, day=day)
     return render_template("reorder.html", todos=todos)
 
 @app.post('/todos/reorder')
