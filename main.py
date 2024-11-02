@@ -43,12 +43,15 @@ def toggle_todo(id):
     todo.toggle_completed()
     todo.save()
     todos = Todo.all(view)
-    return redirect('/todos')
+    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    search = request.args.get('search', None)
+    return render_template("main.html", todos=todos, view = view, search=search, week = week)
 
 @app.get('/todos/<id>/edit')
 def edit_todo(id):
     view = request.args.get('view', None)
     todos = Todo.all(view)
+    #return redirect('/todos')
     return render_template("index.html", todos=todos, editing=int(id), view=view)
 
 @app.post('/todos/<id>')
