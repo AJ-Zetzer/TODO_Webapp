@@ -48,5 +48,9 @@ class Todo(Model):
             i += 1
             todo.save()
 
+    @classmethod
+    def get_days(cls):
+        return ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+
     class Meta:
         database = db

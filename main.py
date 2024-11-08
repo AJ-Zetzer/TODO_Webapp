@@ -26,7 +26,7 @@ def all_todos():
     view = request.args.get('view', None)
     search = request.args.get('search', None)
     todos = Todo.all(view, search)
-    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    week = Todo.get_days()
     return render_template("index.html", todos=todos, view = view, search=search, week = week)
 
 @app.post('/todos')
@@ -43,7 +43,7 @@ def toggle_todo(id):
     todo.toggle_completed()
     todo.save()
     todos = Todo.all(view)
-    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    week = Todo.get_days()
     search = request.args.get('search', None)
     return render_template("main.html", todos=todos, view = view, search=search, week = week)
 
@@ -52,7 +52,7 @@ def edit_todo(id):
     view = request.args.get('view', None)
     todos = Todo.all(view)
     #return redirect('/todos')
-    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    week = Todo.get_days()
     search = request.args.get('search', None)
     return render_template("main.html", todos=todos, editing=int(id), view = view, search=search, week = week)
 
@@ -76,7 +76,7 @@ def update_todo_order():
     id_list = request.form.getlist("ids")
     Todo.reorder(id_list)
     todos = Todo.all(view)
-    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    week = Todo.get_days()
     return render_template("main.html", todos=todos, view=view, editing=None, week=week)
 
 @app.get('/todos/search')
@@ -84,7 +84,7 @@ def show_todo_search():
     view = request.args.get('view', None)
     search = request.args.get('search', None)
     todos = Todo.all(view, search)
-    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    week = Todo.get_days()
     return render_template("main.html", todos=todos, week = week, view=view, search=search, searching=1)
 
 def add_view_context(view):
