@@ -18,15 +18,18 @@
         </label>
         <input type="hidden" name="view" value="{{ view }}">
     </form>
-    <a hx-get="/todos/reorder"
-       hx-target="#todos-list"
-       hx-swap="outerHTML">Reorder Todos</a>
     <div class = "week-container">
     {% for day in week %}
-    <div class="paper">
+    <div>
+    <a hx-get="/todos/reorder/{{ day }}"
+        hx-target="#todos-list-{{ day }}"
+        hx-swap="outerHTML">Reorder Todos</a>
+    
+    
     <header class="header">{{ day }}</header>
-    <ol id="todos-list" class="list">
+    <ol id="todos-list-{{ day }}" class="list">
         {% for todo in todos %}
+        {% if todo.day == day %}
             <li>
                 {% if todo.id == editing %}
                 <form method="post" action="/todos/{{ todo.id }}">
@@ -35,7 +38,7 @@
                 </form>
                 {% else %}
 
-                {% if todo.day == day %}
+                <!-- {% if todo.day == day %} -->
                 <form hx-post="/todos/{{ todo.id }}/toggle"
                       hx-target="main"
                     ondblclick="document.getElementById('edit-{{ todo.id }}').submit()">
@@ -58,11 +61,13 @@
                 <form id="edit-{{ todo.id }}" action="/todos/{{ todo.id }}/edit" method="get">
                     <input type="hidden" name="view" value="{{ view }}">
                 </form>
-                {% endif %}
+                <!-- {% endif %} -->
                 {% endif %}
             </li>
+            {% endif %}
         {% endfor %}
     </ol>
+    
     </div>
     {% endfor %}
     </div>

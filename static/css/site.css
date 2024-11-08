@@ -15,7 +15,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             padding: 20px;
             width: 250px;
-            hight: 400px;
+            /* height: 400px; */
             margin: 3px;
             position: relative;
             overflow: hidden;
@@ -29,9 +29,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+            /* background-image: url('https://www.transparenttextures.com/patterns/paper.png'); */
             opacity: 0.1; /* Adjust for more or less texture */
-            z-index: 1;
+            /* z-index: 1; */
         }
 
         .list {

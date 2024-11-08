@@ -26,7 +26,7 @@ def all_todos():
     view = request.args.get('view', None)
     search = request.args.get('search', None)
     todos = Todo.all(view, search)
-    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    week = Todo.get_days()
     return render_template("index.html", todos=todos, view = view, search=search, week = week)
 
 @app.post('/todos')
@@ -43,13 +43,18 @@ def toggle_todo(id):
     todo.toggle_completed()
     todo.save()
     todos = Todo.all(view)
-    return render_template("main.html", todos=todos, view=view, editing=None)
+    week = Todo.get_days()
+    search = request.args.get('search', None)
+    return render_template("main.html", todos=todos, view = view, search=search, week = week)
 
 @app.get('/todos/<id>/edit')
 def edit_todo(id):
     view = request.args.get('view', None)
     todos = Todo.all(view)
-    return render_template("index.html", todos=todos, editing=int(id), view=view)
+    #return redirect('/todos')
+    week = Todo.get_days()
+    search = request.args.get('search', None)
+    return render_template("main.html", todos=todos, editing=int(id), view = view, search=search, week = week)
 
 @app.post('/todos/<id>')
 def update_todos(id):
@@ -59,10 +64,10 @@ def update_todos(id):
     todo.save()
     return redirect("/todos" + add_view_context(view))
 
-@app.get('/todos/reorder')
-def show_reorder_ui():
+@app.get('/todos/reorder/<day>')
+def show_reorder_ui(day):
     view = request.args.get('view', None)
-    todos = Todo.all(view)
+    todos = Todo.all(view, day=day)
     return render_template("reorder.html", todos=todos)
 
 @app.post('/todos/reorder')
@@ -71,15 +76,17 @@ def update_todo_order():
     id_list = request.form.getlist("ids")
     Todo.reorder(id_list)
     todos = Todo.all(view)
-    return render_template("main.html", todos=todos, view=view, editing=None)
+    week = Todo.get_days()
+    return render_template("main.html", todos=todos, view=view, editing=None, week=week)
 
 @app.get('/todos/search')
 def show_todo_search():
     view = request.args.get('view', None)
     search = request.args.get('search', None)
+
     todos = Todo.all(view, search)
-    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-    return render_template("main.html", todos=todos, week = week, view=view, search=search, searching=1)
+    week = Todo.get_days()
+    return render_template("main.html", todos=todos, view=view, search=search, searching=1, week=week)
 
 def add_view_context(view):
     return ("?view=" + view) if view is not None else ""
