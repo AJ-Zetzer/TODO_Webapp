@@ -76,7 +76,8 @@ def update_todo_order():
     id_list = request.form.getlist("ids")
     Todo.reorder(id_list)
     todos = Todo.all(view)
-    return render_template("main.html", todos=todos, view=view, editing=None)
+    week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    return render_template("main.html", todos=todos, view=view, editing=None, week=week)
 
 @app.get('/todos/search')
 def show_todo_search():

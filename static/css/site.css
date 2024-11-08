@@ -29,9 +29,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+            /* background-image: url('https://www.transparenttextures.com/patterns/paper.png'); */
             opacity: 0.1; /* Adjust for more or less texture */
-            z-index: 1;
+            /* z-index: 1; */
         }
 
         .list {

@@ -24,7 +24,7 @@
     <a hx-get="/todos/reorder/{{ day }}"
         hx-target="#todos-list-{{ day }}"
         hx-swap="outerHTML">Reorder Todos</a>
-    <div class="paper">
+    
     
     <header class="header">{{ day }}</header>
     <ol id="todos-list-{{ day }}" class="list">
@@ -67,7 +67,7 @@
             {% endif %}
         {% endfor %}
     </ol>
-    </div>
+    
     </div>
     {% endfor %}
     </div>
