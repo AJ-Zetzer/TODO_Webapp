@@ -58,6 +58,10 @@
                         </del>
                     {% endif %}
                 </form>
+
+
+
+
                 <form id="edit-{{ todo.id }}" action="/todos/{{ todo.id }}/edit" method="get">
                     <input type="hidden" name="view" value="{{ view }}">
                 </form>

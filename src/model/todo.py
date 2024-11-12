@@ -20,7 +20,7 @@ class Todo(Model):
         self.completed = not self.completed
 
     @classmethod
-    def all(cls, view = None, search=None):
+    def all(cls, view = None, search=None, day = None):
         select = Todo.select()
         if view == "active":
             select = select.where(Todo.completed == False)
@@ -30,7 +30,8 @@ class Todo(Model):
         if search:
             select = select.where(Todo.text.ilike("%" + search + "%"))
 
-
+        if day:
+            select = select.where(Todo.day == day)
         return select.order_by(Todo.order)
 
     @classmethod

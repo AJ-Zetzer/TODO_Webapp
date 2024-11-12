@@ -68,6 +68,7 @@ def update_todos(id):
 def show_reorder_ui(day):
     view = request.args.get('view', None)
     todos = Todo.all(view, day=day)
+    week = Todo.get_days()
     return render_template("reorder.html", todos=todos)
 
 @app.post('/todos/reorder')
