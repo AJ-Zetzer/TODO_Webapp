@@ -50,11 +50,10 @@ def toggle_todo(id):
 @app.get('/todos/<id>/edit')
 def edit_todo(id):
     view = request.args.get('view', None)
-    todos = Todo.all(view)
-    #return redirect('/todos')
-    week = Todo.get_days()
     search = request.args.get('search', None)
-    return render_template("main.html", todos=todos, editing=int(id), view = view, search=search, week = week)
+    todos = Todo.all(view, search)
+    week = Todo.get_days()
+    return render_template("index.html", todos=todos, view=view, search=search, week=week, editing = int(id))
 
 @app.post('/todos/<id>')
 def update_todos(id):
@@ -68,7 +67,6 @@ def update_todos(id):
 def show_reorder_ui(day):
     view = request.args.get('view', None)
     todos = Todo.all(view, day=day)
-    week = Todo.get_days()
     return render_template("reorder.html", todos=todos)
 
 @app.post('/todos/reorder')

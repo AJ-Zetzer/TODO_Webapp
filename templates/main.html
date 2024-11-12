@@ -2,9 +2,9 @@
         <label>
             New Todo
             <div style="display: flex; align-items: center;">
-            <input {{ 'autofocus' if editing is undefined and searching is undefined}} required type="text" name="todo" placeholder="Enter a new TODO">
+            <input id="todo-text" {{ 'autofocus' if editing is undefined and searching is undefined}} required type="text" name="todo" placeholder="Enter a new TODO">
 
-            <select name="day"  required style="width: 20%;">
+            <select name="day"  required style="width: 20%;" onchange="document.getElementById('todo-text').focus() ">
             <option value="" disabled selected>Select Day</option>
             <option value="Monday">Monday</option>
             <option value="Tuesday">Tuesday</option>
