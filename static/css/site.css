@@ -19,13 +19,13 @@
              background: white;
 
 
-             box-shadow: 15px 15px rgba(0,0,0,.15);
+             box-shadow: 8px 8px rgba(0,0,0,.15);
              transition: all .4s ease;
              border: 1px solid #ccc;
         }
         .list:hover {
 
-            box-shadow: 10px 10px rgba(0,0,0,.25);
+            box-shadow: 5px 5px rgba(0,0,0,.25);
 }
 
         .list li {
@@ -46,8 +46,16 @@
 
         #reorder-img {
             transition: transform 0.3s ease;
+            float: right;
         }
 
         #reorder-img:hover {
             transform: scale(1.1);
+        }
+
+        .day-header{
+             border: 1px solid #ccc;
+             border-radius: 3px 10px 0px 0px;
+             width: 150px;
+             box-shadow: 4px 0px rgba(0,0,0,.25);
         }
