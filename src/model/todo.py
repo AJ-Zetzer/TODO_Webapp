@@ -57,6 +57,8 @@ class Todo(Model):
         for tid in todos:
             if tid.completed:
                 tid.delete()
+
+        print(todos)
         return todos
 
     class Meta:

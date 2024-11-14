@@ -23,7 +23,9 @@
     <div>
     <a hx-get="/todos/reorder/{{ day }}"
         hx-target="#todos-list-{{ day }}"
-        hx-swap="outerHTML">Reorder Todos</a>
+        hx-swap="outerHTML">
+        <img src="/img/reorder-svgrepo-com.svg" width ="20" id="reorder-img">
+    </a>
     
     
     <header class="header">{{ day }}</header>
@@ -93,7 +95,7 @@
         </ul>
         <ul>
             <li>
-                <a hx-post="/todos/delete">
+                <a href="/todos/delete">
                 DELETE</a>
             </li>
         </ul>
