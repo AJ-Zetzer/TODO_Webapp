@@ -51,15 +51,11 @@ def toggle_todo(id):
 
 
 
-@app.get('/todos/delete')
+@app.post('/todos/delete')
 def delete_todos():
     view = request.form.get('view', None)
-    todo = Todo.deleteTodos()
-    todo.save()
-    todos = Todo.all()
-    week = Todo.get_days()
-    search = request.args.get('search', None)
-    return render_template("main.html", todos=todos, view = view, search=search, week = week)
+    Todo.deleteTodos()
+    return redirect("/todos" + add_view_context(view))
 
 
 
