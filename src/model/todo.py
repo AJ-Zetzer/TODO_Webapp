@@ -51,5 +51,13 @@ class Todo(Model):
     def get_days(cls):
         return ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
+
+    def deleteTodos(cls):
+        todos = cls.all()
+        for tid in todos:
+            if tid.completed:
+                tid.delete()
+        return todos
+
     class Meta:
         database = db
