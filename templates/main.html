@@ -22,10 +22,11 @@
     {% for day in week %}
     <div>
     <!-- TODO add a "button"/anchor tag, a plus?, to add a todo to a certain day -->
+    <!-- TODO pointer finger for cursor on reorder hover -->
     <a hx-get="/todos/reorder/{{ day }}"
-        hx-target="#todos-list-{{ day }}"
-        hx-swap="outerHTML">
-        <img src="/img/reorder-svgrepo-com.svg" width ="20" id="reorder-img">
+       hx-target="#todos-list-{{ day }}"
+       hx-swap="outerHTML">
+       <img src="/img/reorder-svgrepo-com.svg" width ="20" id="reorder-img">
     </a>
     
     
