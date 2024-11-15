@@ -21,6 +21,7 @@
     <div class = "week-container">
     {% for day in week %}
     <div>
+    <!-- TODO add a "button"/anchor tag, a plus?, to add a todo to a certain day -->
     <a hx-get="/todos/reorder/{{ day }}"
         hx-target="#todos-list-{{ day }}"
         hx-swap="outerHTML">
@@ -35,7 +36,7 @@
             <li>
                 {% if todo.id == editing %}
                 <form method="post" action="/todos/{{ todo.id }}">
-                    <input autofocus required type="text" value="{{ todo.text }}" name="todo">
+                    <input autofocus required type="text" value="{{ todo.text }}" name="todo"  class="editor">
                     <input type="hidden" name="view" value="{{ view }}">
                 </form>
                 {% else %}
@@ -70,13 +71,14 @@
                 <!-- {% endif %} -->
                 {% endif %}
             </li>
+            <hr class="divider">
             {% endif %}
         {% endfor %}
     </ol>
     
     </div>
     {% endfor %}
-    </div>
+    
     <nav>
         <ul>
             <li>
@@ -95,10 +97,13 @@
         </ul>
         <ul>
             <li>
-                <form id="del" action="/todos/delete" method="post"
-                onclick="document.getElementById('del').submit()">
-                    <a>Delete</a></form>
+                <a hx-post="/todos/delete"
+                   hx-target="main"
+                   hx-swap="innerHTML"
+                   >Delete</a>
             </li>
         </ul>
 
     </nav>
+
+</div>

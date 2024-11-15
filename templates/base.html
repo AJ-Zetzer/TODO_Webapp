@@ -10,6 +10,7 @@
 </head>
 <body>
 <header class="container center">
+    <h1 style="font-size: 2em; float:left; margin-top: 4px"><img style="height: 60px" src="/img/todo.svg">   TODOApp</h1>
     <form type="hidden">
         <input style = "float: right; width: 300px" class="form-control" type="search"
             name="search" placeholder="Begin Typing"
@@ -18,10 +19,10 @@
             hx-target="main"
             >
     </form>
-
-    <h1 style="font-size: 2em; float:left; margin-top: 4px"><img style="height: 60px" src="/img/todo.svg">   TODOApp</h1>
 </header>
-<main class="container" style="clear:both">
+
+<main class="container" style="clear:both; padding-top: 0;">
+
     {% block content %}{% endblock %}
 
 </main>

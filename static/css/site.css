@@ -3,7 +3,7 @@
 }
 body{
     background-color: #ebf0e9;
-    padding-bottom: 50px;
+    padding-bottom: 40px;
 }
 
 .week-container {
@@ -18,9 +18,11 @@ body{
         .list {
              position: relative;
              width: 350px;
-             min-height: 250px;
-             height: auto;
+             height: 250px;
+             
              background: white;
+             overflow-y: auto;
+             overflow-x: hidden;
 
 
              box-shadow: 8px 8px rgba(0,0,0,.15);
@@ -33,8 +35,8 @@ body{
 }
 
         .list li {
-            padding: 10px;
-            border-bottom: 2px solid #ddd;
+            padding-top: 10px;
+            /* border-bottom: 2px solid #ddd; */
         }
 
         .list li:last-child {
@@ -107,3 +109,15 @@ body{
             padding: 0;
             margin: 0;
         }
+
+.divider {
+    width: 349px;
+    margin: 0px -41px;
+    border: none;
+    border-top: 2px solid #ddd;
+}
+
+.editor {
+    height: 15px !important;
+    margin-bottom: 0px !important;
+}
