@@ -61,6 +61,16 @@ def delete_todos():
     return render_template("main.html", todos=todos, view=view, search=search, week=week)
     #return redirect("/todos" + add_view_context(view))
 
+@app.post('/todos/<id>/delete')
+def delete_todo(id):
+    Todo.deleteTodos(id)
+    view = request.args.get('view', None)
+    search = request.args.get('search', None)
+    todos = Todo.all(view, search)
+    week = Todo.get_days()
+    return render_template("main.html", todos=todos, view=view, search=search, week=week)
+
+
 
 
 

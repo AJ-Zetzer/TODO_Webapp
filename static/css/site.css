@@ -38,8 +38,11 @@ body{
             box-shadow: 5px 5px rgba(0,0,0,.25);
 }
 
-        .list li {
-            padding-top: 10px;
+        .list #main-li {
+            padding-top: 5px;
+            display: flex;
+            justify-content: space-between;
+
             /* border-bottom: 2px solid #ddd; */
         }
 
@@ -61,6 +64,7 @@ body{
 
         #reorder-img:hover {
             transform: scale(1.15);
+            cursor: pointer;
         }
 
         .day-header{
@@ -89,6 +93,26 @@ body{
             -webkit-user-select: none;
             touch-action: manipulation;
         }
+
+        #del-item{
+            display: none; /* Hide the button initially */
+            border: none; /* Remove border */
+            background: none; /* Remove background */
+            padding: 0; /* Remove padding */
+            cursor: pointer;
+        }
+
+        li:hover #del-item{
+
+            display: inline-block;
+            padding-right: 5px;
+            padding-top: 2px;
+        }
+
+        #del-item:hover{
+            transform: scale(1.15);
+        }
+
 
         nav ul li:active{
             box-shadow: 0px 0px 0px 0px;
@@ -125,4 +149,8 @@ body{
 .editor {
     height: 15px !important;
     margin-bottom: 0px !important;
+}
+
+.del-item{
+
 }

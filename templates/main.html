@@ -22,7 +22,6 @@
     {% for day in week %}
     <div>
     <!-- TODO add a "button"/anchor tag, a plus?, to add a todo to a certain day -->
-    <!-- TODO pointer finger for cursor on reorder hover -->
     <a hx-get="/todos/reorder/{{ day }}"
        hx-target="#todos-list-{{ day }}"
        hx-swap="outerHTML">
@@ -34,7 +33,7 @@
     <ol id="todos-list-{{ day }}" class="list">
         {% for todo in todos %}
         {% if todo.day == day %}
-            <li>
+            <li id="main-li">
                 {% if todo.id == editing %}
                 <form method="post" action="/todos/{{ todo.id }}">
                     <input autofocus required type="text" value="{{ todo.text }}" name="todo"  class="editor">
@@ -43,7 +42,8 @@
                 {% else %}
 
                 <!-- {% if todo.day == day %} -->
-                <form hx-post="/todos/{{ todo.id }}/toggle"
+                <form style="margin-bottom: 3px"
+                      hx-post="/todos/{{ todo.id }}/toggle"
                       hx-target="main"
                     ondblclick="document.getElementById('edit-{{ todo.id }}').submit()">
                     <button style="all:unset">
@@ -69,6 +69,12 @@
                 <form id="edit-{{ todo.id }}" action="/todos/{{ todo.id }}/edit" method="get">
                     <input type="hidden" name="view" value="{{ view }}">
                 </form>
+                <a id="del-item"
+                   hx-post="/todos/{{ todo.id }}/delete"
+                   hx-target="main"
+                   hx-swap="innerHTML">
+                    <img src="/img/delete-forever-svgrepo-com.svg" width ="20" id="del-img">
+                </a>
                 <!-- {% endif %} -->
                 {% endif %}
             </li>

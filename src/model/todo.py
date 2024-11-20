@@ -57,6 +57,10 @@ class Todo(Model):
             if tid.completed:
                 tid.delete_instance()
 
+    @classmethod
+    def deleteTodos(cls, tid):
+        todo = Todo.find(tid)
+        todo.delete_instance()
 
     class Meta:
         database = db
