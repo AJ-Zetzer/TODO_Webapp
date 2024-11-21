@@ -1,23 +1,4 @@
-<form action="/todos" method="post">
-        <label>
-            New Todo
-            <div style="display: flex; align-items: center;">
-            <input id="todo-text" {{ 'autofocus' if editing is undefined and searching is undefined}} required type="text" name="todo" placeholder="Enter a new TODO">
 
-            <select name="day"  required style="width: 20%;" onchange="document.getElementById('todo-text').focus() ">
-            <option value="" disabled selected>Select Day</option>
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-            <option value="Saturday">Saturday</option>
-            <option value="Sunday">Sunday</option>
-            </select>
-            </div>
-        </label>
-        <input type="hidden" name="view" value="{{ view }}">
-    </form>
     <div class = "week-container">
     {% for day in week %}
     <div>
@@ -27,9 +8,9 @@
        hx-swap="outerHTML">
        <img src="/img/reorder-svgrepo-com.svg" width ="20" id="reorder-img">
     </a>
-    <a hx-get="/todos/reorder/{{ day }}"
-       hx-target="#todos-list-{{ day }}"
-       hx-swap="outerHTML">
+    <a hx-post="/todos/add/{{ day }}"
+       hx-target="body"
+       hx-swap="innerHTML">
        <img src="/img/plus-large-thick-svgrepo-com.svg" width="20" id="add-img">
     </a>
     
@@ -112,7 +93,7 @@
                 <a hx-post="/todos/delete"
                    hx-target="main"
                    hx-swap="innerHTML"
-                   >Delete</a>
+                   >Clear complete</a>
             </li>
         </ul>
 
