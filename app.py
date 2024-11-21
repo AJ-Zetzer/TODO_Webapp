@@ -63,7 +63,7 @@ def delete_todos():
 
 @app.post('/todos/<id>/delete')
 def delete_todo(id):
-    Todo.deleteTodos(id)
+    Todo.deleteTodo(id)
     view = request.args.get('view', None)
     search = request.args.get('search', None)
     todos = Todo.all(view, search)

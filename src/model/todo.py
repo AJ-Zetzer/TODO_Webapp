@@ -58,7 +58,7 @@ class Todo(Model):
                 tid.delete_instance()
 
     @classmethod
-    def deleteTodos(cls, tid):
+    def deleteTodo(cls, tid):
         todo = Todo.find(tid)
         todo.delete_instance()
 
