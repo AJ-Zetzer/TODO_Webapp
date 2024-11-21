@@ -1,8 +1,19 @@
 
+    <a
+
+
+        >
+        <img src="/img/arrow-next-svgrepo-com.svg" width="40" style="float: right; margin-top:275px; margin-left:10px">
+    </a>
+    <a
+
+
+        >
+        <img src="/img/arrow-prev-svgrepo-com.svg" width="40" style="float: left; margin-top:275px; margin-right:10px">
+    </a>
     <div class = "week-container">
     {% for day in week %}
     <div>
-    <!-- TODO add a "button"/anchor tag, a plus?, to add a todo to a certain day -->
     <a hx-get="/todos/reorder/{{ day }}"
        hx-target="#todos-list-{{ day }}"
        hx-swap="outerHTML show:none">

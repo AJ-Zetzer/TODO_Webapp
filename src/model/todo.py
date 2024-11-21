@@ -13,6 +13,7 @@ class Todo(Model):
     completed = BooleanField()
     order = IntegerField(null=True)
     day = CharField()
+    #weekNum = IntegerField()
 
 
 
