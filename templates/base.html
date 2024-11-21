@@ -11,8 +11,8 @@
 <body>
 <header class="container center">
     <h1 style="font-size: 2em; float:left; margin-top: 4px"><img style="height: 60px" src="/img/todo.svg">   TODOApp</h1>
-    <form type="hidden" style="border-radius: 0px">
-        <input style = "float: right; width: 300px" class="form-control" type="search"
+    <form type="hidden">
+        <input style = "float: right; width: 300px; border-radius: 5px;" class="form-control" type="search"
             name="search" placeholder="Begin Typing"
             hx-get="/todos/search"
             hx-trigger="input changed delay:500ms, search"

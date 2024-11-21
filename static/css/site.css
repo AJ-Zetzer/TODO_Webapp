@@ -67,6 +67,19 @@ body{
             cursor: pointer;
         }
 
+        #add-img {
+            transition: transform 0.3s ease;
+            float: right;
+            margin-right: 10px;
+
+        }
+
+        #add-img:hover {
+            transform: scale(1.15);
+            cursor: pointer;
+        }
+
+
         .day-header{
              border: 1px solid #ccc;
              border-radius: 3px 10px 0px 0px;

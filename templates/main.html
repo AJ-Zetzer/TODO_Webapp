@@ -27,6 +27,11 @@
        hx-swap="outerHTML">
        <img src="/img/reorder-svgrepo-com.svg" width ="20" id="reorder-img">
     </a>
+    <a hx-get="/todos/reorder/{{ day }}"
+       hx-target="#todos-list-{{ day }}"
+       hx-swap="outerHTML">
+       <img src="/img/plus-large-thick-svgrepo-com.svg" width="20" id="add-img">
+    </a>
     
     
     <header class="day-header">{{ day }}</header>
