@@ -1,7 +1,8 @@
 
     <form hx-post="/todos/reorder"
+            hx-trigger="click save"
             hx-target="main"
-            hx-swap="innerHTML show:main:top">
+            hx-swap="innerHTML">
 
 
     <ul id="todo-list" class="list">
@@ -14,9 +15,10 @@
                 <input type="hidden" name="ids" value="{{ todo.id }}">
             </li>
         {% endfor %}
+
     </ul>
 
-    <button>Save</button>
+    <div id="save">Save</div>
     </form>
 
     <script>

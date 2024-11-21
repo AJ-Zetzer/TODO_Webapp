@@ -108,15 +108,15 @@ body{
         }
 
         #del-item{
-            display: none; /* Hide the button initially */
-            border: none; /* Remove border */
-            background: none; /* Remove background */
-            padding: 0; /* Remove padding */
+            display: none;
+            border: none;
+            background: none;
+            padding: 0;
             cursor: pointer;
         }
 
         li:hover #del-item{
-
+            transition: transform 0.3s ease;
             display: inline-block;
             padding-right: 5px;
             padding-top: 2px;
@@ -128,7 +128,6 @@ body{
 
 
         nav ul li:active{
-            box-shadow: 0px 0px 0px 0px;
             top: 5px;
             left: 5px;
         }
@@ -140,6 +139,34 @@ body{
             align-items: center;
             background-color: #ebf0e9;
 
+        }
+
+        #save{
+            width: 71px;
+            background-color: #ebf0e9;
+            font-family: "Open Sans", sans-serif;
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #000;
+            cursor: pointer;
+            border: 3px solid;
+            padding: 0.25em 0.5em;
+
+            position: relative;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+
+        }
+
+        #save:hover{
+            transform: scale(1.02);
+        }
+        #save:active{
+            top: 5px;
+            left: 5px;
         }
 
         #del{

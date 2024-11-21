@@ -5,12 +5,12 @@
     <!-- TODO add a "button"/anchor tag, a plus?, to add a todo to a certain day -->
     <a hx-get="/todos/reorder/{{ day }}"
        hx-target="#todos-list-{{ day }}"
-       hx-swap="outerHTML">
+       hx-swap="outerHTML show:none">
        <img src="/img/reorder-svgrepo-com.svg" width ="20" id="reorder-img">
     </a>
     <a hx-post="/todos/add/{{ day }}"
        hx-target="body"
-       hx-swap="innerHTML">
+       hx-swap="innerHTML show:none">
        <img src="/img/plus-large-thick-svgrepo-com.svg" width="20" id="add-img">
     </a>
     
@@ -58,7 +58,7 @@
                 <a id="del-item"
                    hx-post="/todos/{{ todo.id }}/delete"
                    hx-target="main"
-                   hx-swap="innerHTML focus-scroll:true">
+                   hx-swap="innerHTML show:none">
                     <img src="/img/delete-1-svgrepo-com.svg" width ="20" id="del-img">
                 </a>
                 <!-- {% endif %} -->
@@ -72,7 +72,7 @@
     </div>
     {% endfor %}
     
-    <nav>
+    <nav hx-boost="true" hx-swap="innerHTML show:none">
         <ul>
             <li>
                 <a class="{{ 'contrast' if view == None }}" href="/todos">All</a>
