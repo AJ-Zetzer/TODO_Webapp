@@ -51,10 +51,10 @@ def toggle_todo(id):
 
 @app.post('/todos/add/<day>')
 def create_todo(day):
-    view = request.form.get('view', None)
+    view = request.args.get('view', None)
     todo = Todo(text = "", day = day, completed=False)
     todo.save()
-    return redirect("/todos/" + str(todo.get_id()) + "/edit")
+    return redirect("/todos/" + str(todo.get_id()) + "/edit" + add_view_context(view))
 
 
 
