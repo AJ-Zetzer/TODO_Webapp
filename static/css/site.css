@@ -1,6 +1,10 @@
 .center {
     text-align: center;
 }
+
+html{
+    background-color: #ebf0e9;
+}
 body{
     background-color: #ebf0e9;
     padding-bottom: 40px;
