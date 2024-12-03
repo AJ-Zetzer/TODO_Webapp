@@ -7,11 +7,13 @@
        hx-swap="outerHTML show:none">
        <img src="/img/reorder-svgrepo-com.svg" width ="20" id="reorder-img">
     </a>
-    <a hx-post="/todos/add/{{ day }}"
+    <form hx-post="/todos/add/{{ day }}"
        hx-target="body"
-       hx-swap="innerHTML show:none">
+       hx-swap="innerHTML show:none"
+       hx-trigger="click">
        <img src="/img/plus-large-thick-svgrepo-com.svg" width="20" id="add-img">
-    </a>
+       <input type="hidden" name="view" value="{{ view }}">
+    </form>
     
     
     <header class="day-header">{{ day }}</header>

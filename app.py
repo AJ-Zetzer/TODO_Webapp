@@ -29,12 +29,12 @@ def all_todos():
     week = Todo.get_days()
     return render_template("index.html", todos=todos, view = view, search=search, week = week)
 
-@app.post('/todos')
+""" @app.post('/todos')
 def create_todos():
     view = request.form.get('view', None)
     todo = Todo(text = request.form['todo'], day = request.form['day'], completed=False)
     todo.save()
-    return redirect("/todos" + add_view_context(view))
+    return redirect("/todos" + add_view_context(view)) """
 
 @app.post('/todos/<id>/toggle')
 def toggle_todo(id):
@@ -48,14 +48,22 @@ def toggle_todo(id):
     return render_template("main.html", todos=todos, view = view, search=search, week = week)
 
 
-
 @app.post('/todos/add/<day>')
 def create_todo(day):
-    view = request.args.get('view', None)
+    view = request.form.get('view', None)
     todo = Todo(text = "", day = day, completed=False)
     todo.save()
     return redirect("/todos/" + str(todo.get_id()) + "/edit" + add_view_context(view))
 
+
+@app.get('/todos/<id>/edit')
+def edit_todo(id):
+    view = request.args.get('view', None)
+    #print(view)
+    search = request.args.get('search', None)
+    todos = Todo.all(view, search)
+    week = Todo.get_days()
+    return render_template("index.html", todos=todos, view=view, search=search, week=week, editing = int(id))
 
 
 @app.post('/todos/delete')
@@ -78,18 +86,6 @@ def delete_todo(id):
     return render_template("main.html", todos=todos, view=view, search=search, week=week)
 
 
-
-
-
-
-@app.get('/todos/<id>/edit')
-def edit_todo(id):
-    view = request.args.get('view', None)
-    search = request.args.get('search', None)
-    todos = Todo.all(view, search)
-    week = Todo.get_days()
-    return render_template("index.html", todos=todos, view=view, search=search, week=week, editing = int(id))
-
 @app.post('/todos/<id>')
 def update_todos(id):
     view = request.form.get('view', None)
@@ -101,12 +97,14 @@ def update_todos(id):
 @app.get('/todos/reorder/<day>')
 def show_reorder_ui(day):
     view = request.args.get('view', None)
+    print("reorder button:" ,view)
     todos = Todo.all(view, day=day)
     return render_template("reorder.html", todos=todos)
 
 @app.post('/todos/reorder')
 def update_todo_order():
-    view = request.args.get('view', None)
+    view = request.form.get('view', None)
+    print(view)
     id_list = request.form.getlist("ids")
     Todo.reorder(id_list)
     todos = Todo.all(view)

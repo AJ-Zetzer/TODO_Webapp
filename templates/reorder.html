@@ -3,6 +3,7 @@
             hx-trigger="click save"
             hx-target="main"
             hx-swap="innerHTML">
+    
 
 
     <ul id="todo-list" class="list">
@@ -15,7 +16,6 @@
                 <input type="hidden" name="ids" value="{{ todo.id }}">
             </li>
         {% endfor %}
-
     </ul>
 
     <div id="save">Save</div>
