@@ -58,12 +58,16 @@
                 <form id="edit-{{ todo.id }}" action="/todos/{{ todo.id }}/edit" method="get">
                     <input type="hidden" name="view" value="{{ view }}">
                 </form>
-                <a id="del-item"
+                <a>
+                    <form id="del-item"
                    hx-post="/todos/{{ todo.id }}/delete"
                    hx-target="main"
                    hx-swap="innerHTML show:none"
-                   hx-confirm="Delete this item?">
+                   hx-confirm="Delete this item?"
+                    hx-trigger="click">
                     <img src="/img/delete-1-svgrepo-com.svg" width ="20" id="del-img">
+                    <input type="hidden" name="view" value="{{ view }}">
+                    </form>
                 </a>
                 <!-- {% endif %} -->
                 {% endif %}
