@@ -24,7 +24,7 @@
         {% if todo.day == day %}
             <li id="main-li">
                 {% if todo.id == editing %}
-                <form method="post" action="/todos/{{ todo.id }}">
+                <form hx-boost="true" method="post" action="/todos/{{ todo.id }}">
                     <input autofocus required type="text" value="{{ todo.text }}" name="todo"  class="editor">
                     <input type="hidden" name="view" value="{{ view }}">
                 </form>
@@ -61,7 +61,8 @@
                 <a id="del-item"
                    hx-post="/todos/{{ todo.id }}/delete"
                    hx-target="main"
-                   hx-swap="innerHTML show:none">
+                   hx-swap="innerHTML show:none"
+                   hx-confirm="Delete this item?">
                     <img src="/img/delete-1-svgrepo-com.svg" width ="20" id="del-img">
                 </a>
                 <!-- {% endif %} -->
@@ -96,6 +97,7 @@
                 <a hx-post="/todos/delete"
                    hx-target="main"
                    hx-swap="innerHTML"
+                   hx-confirm="Are you Sure?"
                    >Clear complete</a>
             </li>
         </ul>
